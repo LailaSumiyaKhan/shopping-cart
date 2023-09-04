@@ -14,5 +14,9 @@
 
 # How to run locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Download the code as zip file from the [https://github.com/LailaSumiyaKhan/shopping-cart](repository) by clicking on the `<> Code` button and then clicking on `Download ZIP`.
+- Extract the zip file.
+- Open windows command prompt in the root folder.
+- Run `npm install` command. Make sure you have `node` and `npm` installed.
+- Run `npm start` command. This will run the app in the development mode.
+- Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
