@@ -8,10 +8,42 @@ import {
   CardActions,
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-const Product = ({ name, price, image }) => {
+const Product = ({
+  name,
+  price,
+  image,
+  isInCart,
+  addToCart,
+  removeFromCart,
+  id,
+  uniqueId,
+}) => {
+  function handleAddToCart() {
+    const product = {
+      name,
+      price,
+      imageUrl: image,
+      isInCart: true,
+      id: uniqueId + 1,
+    };
+    addToCart(product);
+  }
+
+  function handleRemoveFromCart() {
+    const product = {
+      name,
+      price,
+      imageUrl: image,
+      isInCart: false,
+      id,
+    };
+    removeFromCart(product);
+  }
+
   return (
-    <Card sx={{ minWidth: 380, m: 1 }}>
+    <Card sx={{ minWidth: 370, m: 1 }}>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -29,10 +61,26 @@ const Product = ({ name, price, image }) => {
       <CardActions>
         <Button
           variant="contained"
-          sx={{ textTransform: "none" }}
-          startIcon={<AddShoppingCartIcon />}
+          sx={{
+            textTransform: "none",
+            display: isInCart ? "block" : "none",
+            borderRadius: 6,
+          }}
+          onClick={handleRemoveFromCart}
         >
-          Add To Cart
+          <RemoveCircleOutlineIcon sx={{ pt: 0.5 }} />
+        </Button>
+
+        <Button
+          variant="contained"
+          sx={{
+            textTransform: "none",
+            display: isInCart ? "none" : "block",
+            borderRadius: 6,
+          }}
+          onClick={handleAddToCart}
+        >
+          <AddShoppingCartIcon sx={{ pt: 0.5 }} />
         </Button>
       </CardActions>
     </Card>
