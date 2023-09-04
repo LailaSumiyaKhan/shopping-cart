@@ -1,7 +1,6 @@
 import Product from "./Product";
-import { products } from "../data/products";
 import { Box } from "@mui/material";
-function ProductList() {
+function ProductList({ addToCart, listProducts, uniqueId }) {
   return (
     <Box
       sx={{
@@ -11,13 +10,16 @@ function ProductList() {
         flexWrap: "wrap",
       }}
     >
-      {products.map((product, index) => {
+      {listProducts.map((product, index) => {
         return (
           <Product
             key={index}
             name={product.name}
             image={product.imageUrl}
             price={product.price}
+            isInCart={product.isInCart}
+            addToCart={addToCart}
+            uniqueId={uniqueId}
           />
         );
       })}
